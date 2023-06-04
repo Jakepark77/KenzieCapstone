@@ -1,3 +1,9 @@
+package com.kenzie.appserver.service;
+
+import com.kenzie.appserver.repositories.UserRepository;
+import com.kenzie.appserver.repositories.model.UserRecord;
+import com.kenzie.appserver.service.model.User;
+
 public class UserService {
     private UserRepository userRepository;
     public UserService(UserService userService) {
@@ -11,9 +17,10 @@ public class UserService {
         return user;
     }
     public User findUserById(String userId) {
-        User userFromRepository = userRepository.findByUserId(userId)
+        User userFromRepository = userRepository
+                .findById(userId)
                 .map(user -> new User(user.getUserId(),
-                        user.getUserName()))
+                        user.getUserId()))
                 .orElse(null);
         return userFromRepository;
     }

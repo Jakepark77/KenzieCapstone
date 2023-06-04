@@ -1,11 +1,17 @@
-@RestController
+package com.kenzie.appserver.controller;
+
+import com.kenzie.appserver.controller.model.UserCreateRequest;
+import com.kenzie.appserver.controller.model.UserResponse;
+import com.kenzie.appserver.service.UserService;
+import com.kenzie.appserver.service.model.User;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 @RequestMapping("/user")
 public class UserController {
     private UserService userService;
 
-    UserController(UserService userService) {
-        this.userService = userService;
-    }
+    UserController(UserService userService){this.userService = userService;}
     @PostMapping
     public ResponseEntity<UserResponse> addNewUser(@RequestBody UserCreateRequest userCreateRequest) {
         User user = new User(userCreateRequest.getUserId(), userCreateRequest.getUserName());
