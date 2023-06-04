@@ -6,7 +6,7 @@ import com.kenzie.appserver.service.UserService;
 import com.kenzie.appserver.service.model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@RestController
 @RequestMapping("/user")
 public class UserController {
     private UserService userService;
